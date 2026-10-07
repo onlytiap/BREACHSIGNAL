@@ -743,5 +743,20 @@ def main(argv=None):
     return fn(db, a) or 0
 
 
+def _main_guard():
+    """Exit cleanly when the reader closes the pipe early (`... | head`)."""
+    try:
+        return main()
+    except BrokenPipeError:
+        try:
+            devnull = os.open(os.devnull, os.O_WRONLY)
+            os.dup2(devnull, sys.stdout.fileno())
+        except OSError:
+            pass
+        return 0
+    except KeyboardInterrupt:
+        return 130
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(_main_guard())

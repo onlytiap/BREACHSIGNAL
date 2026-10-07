@@ -66,9 +66,13 @@ jobs:
           python3 cli/bsignal.py timeline         > /dev/null
           python3 cli/bsignal.py search snowflake > /dev/null
           python3 cli/bsignal.py show deepseek-clickhouse-2025 > /dev/null
-          python3 cli/bsignal.py export --format csv    | head -2 > /dev/null
-          python3 cli/bsignal.py export --format ndjson | head -2 > /dev/null
-          python3 cli/bsignal.py feed --limit 5         | head -2 > /dev/null
+          # Write to files rather than piping to `head`: a closed pipe raises
+          # BrokenPipeError, and the smoke test should test the CLI, not the shell.
+          python3 cli/bsignal.py export --format csv    > /tmp/out.csv
+          python3 cli/bsignal.py export --format ndjson > /tmp/out.ndjson
+          python3 cli/bsignal.py feed --limit 5         > /tmp/out.xml
+          test -s /tmp/out.csv && test -s /tmp/out.ndjson && test -s /tmp/out.xml
+          head -1 /tmp/out.csv
           echo "CLI smoke tests passed"
 
       - name: Confirm every incident has at least one source URL
