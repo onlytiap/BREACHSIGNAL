@@ -1,0 +1,55 @@
+name: Correction
+description: An incident record in this dataset is wrong. Provide a source.
+title: "[correction] "
+labels: ["correction"]
+body:
+  - type: input
+    id: incident
+    attributes:
+      label: Incident id
+      description: The `id` field from data/incidents.json (e.g. `deepseek-clickhouse-2025`).
+      placeholder: snowflake-campaign-2024
+    validations:
+      required: true
+  - type: input
+    id: field
+    attributes:
+      label: Field
+      description: Which field is wrong?
+      placeholder: records_affected
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What the dataset currently says
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What it should say
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A URL. Corrections merge on evidence, not on reputation — a first-time contributor with a link to an SEC filing outranks a maintainer with an opinion.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of error
+      options:
+        - Wrong figure
+        - Wrong date
+        - Wrong attribution
+        - Dead or wrong source
+        - Confidence level mislabelled
+        - Incident should not be in the dataset
+        - Missing incident
+        - Other
+    validations:
+      required: true

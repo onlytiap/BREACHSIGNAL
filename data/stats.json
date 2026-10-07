@@ -1,0 +1,536 @@
+{
+  "dataset": "BREACHSIGNAL / stats",
+  "generated_at": "2026-10-07",
+  "coverage": {
+    "from": "2023-01-01",
+    "to": "2026-10-07"
+  },
+  "derived_from": "data/incidents.json — regenerate with `python3 build.py`",
+  "totals": {
+    "incidents": 83,
+    "incidents_in_window": 81,
+    "incidents_with_ai_angle": 25,
+    "incidents_ai_category": 11,
+    "never_publicly_disclosed": 4,
+    "attacker_claimed": 5,
+    "distinct_source_urls": 57,
+    "total_citations": 134,
+    "records_affected_sum": 82102118117,
+    "records_sum_warning": "MEANINGLESS AS A TOTAL. Credential compilations (MOAB, RockYou2024, the 2025 credential crisis, the June 2026 dump) repackage each other and the primary breaches they were built from. Use per-year or per-incident figures. See docs/METHODOLOGY.md section 3.",
+    "records_by_year_excluding_compilations": {
+      "2023": 307515000,
+      "2024": 4067260000,
+      "2025": 1768703117,
+      "2026": 58640000
+    },
+    "priced_financial_impact_usd": 24887570000
+  },
+  "by_year": {
+    "2023": 16,
+    "2024": 23,
+    "2025": 32,
+    "2026": 10
+  },
+  "by_category": {
+    "supply_chain": 26,
+    "ransomware": 17,
+    "credential": 16,
+    "ai_specific": 11,
+    "legal": 5,
+    "misconfiguration": 4,
+    "scraping": 1,
+    "state_actor": 1,
+    "data_broker": 1,
+    "insider": 1
+  },
+  "by_confidence": {
+    "victim_disclosure": 33,
+    "regulatory_filing": 25,
+    "security_research": 15,
+    "journalism": 5,
+    "attacker_claim": 5
+  },
+  "by_sector": {
+    "AI": 14,
+    "Retail": 9,
+    "Healthcare": 5,
+    "Credential compilation": 4,
+    "Software": 3,
+    "Telecommunications": 3,
+    "Higher education": 3,
+    "Hospitality": 2,
+    "Cloud": 2,
+    "Hardware": 2,
+    "Banking": 2,
+    "Government": 2,
+    "Insurance": 2,
+    "AI governance": 2,
+    "SaaS": 2,
+    "Government services": 2,
+    "Identity": 1,
+    "Consumer genomics": 1,
+    "Communications": 1,
+    "Postal": 1,
+    "Consumer goods": 1,
+    "Financial services": 1,
+    "Social media": 1,
+    "Health": 1,
+    "Data broker": 1,
+    "Cloud data warehousing": 1,
+    "Education technology": 1,
+    "Healthcare (Australia)": 1,
+    "Automotive retail software": 1,
+    "AI industry (cross-sector)": 1,
+    "Aviation": 1,
+    "Cross-sector": 1,
+    "Automotive manufacturing": 1,
+    "Consumer apps": 1,
+    "Fintech": 1,
+    "E-commerce (South Korea)": 1,
+    "Enterprise software": 1,
+    "Energy": 1,
+    "Health insurance": 1,
+    "Healthcare IT": 1
+  },
+  "by_threat_actor": {
+    "Cl0p": 4,
+    "Scattered Spider": 4,
+    "LockBit": 3,
+    "ALPHV/BlackCat": 2,
+    "UNC5537 / ShinyHunters": 2,
+    "UNC5537": 2,
+    "Scattered Lapsus$ Hunters": 2,
+    "CL0P / TA505": 1,
+    "Scattered Spider (per later reporting)": 1,
+    "Scattered Spider-linked": 1,
+    "Scattered Spider / ALPHV affiliate": 1,
+    "Scattered Spider (reported)": 1,
+    "Storm-0558 (PRC-linked)": 1,
+    "USDoD (claimed)": 1,
+    "UNC5537 / ShinyHunters (Connor Riley Moucka 'Wazawaka', John Binns)": 1,
+    "Black Basta (reported)": 1,
+    "Qilin": 1,
+    "ShinyHunters-linked (reported)": 1,
+    "BlackSuit": 1,
+    "aggregator (not a single intrusion)": 1,
+    "ObamaCare (alias)": 1,
+    "UNC6240 / Scattered Lapsus$ Hunters / ShinyHunters": 1,
+    "Scattered Spider-linked (reported)": 1,
+    "extortion actor (per HIBP listing)": 1,
+    "Cl0p (Cleo campaign)": 1,
+    "former employee (insider)": 1,
+    "Cl0p (initial), later ShinyHunters": 1,
+    "ShinyHunters / UNC6240 (per Google Threat Intelligence Group and Mandiant)": 1,
+    "ShinyHunters / UNC6240": 1,
+    "ShinyHunters": 1,
+    "OpenAI evaluation models (incl. GPT-5.6 Sol-class and an unreleased more capable model)": 1,
+    "various infostealer operations": 1
+  },
+  "top_15_by_records": [
+    {
+      "id": "moab-2024",
+      "title": "MOAB — Mother of All Breaches compilation",
+      "org": "n/a (aggregated compilation)",
+      "year": 2024,
+      "records": 26000000000,
+      "confidence": "security_research"
+    },
+    {
+      "id": "credential-dump-24b-2026",
+      "title": "24-billion-record credential dump — 8TB exposed database",
+      "org": "n/a (exposed compilation)",
+      "year": 2026,
+      "records": 24000000000,
+      "confidence": "security_research"
+    },
+    {
+      "id": "credential-crisis-2025",
+      "title": "2025 credential crisis — 16B records from infostealer logs",
+      "org": "n/a (aggregated compilation)",
+      "year": 2025,
+      "records": 16000000000,
+      "confidence": "security_research"
+    },
+    {
+      "id": "rockyou2024",
+      "title": "RockYou2024 — 9.9B password compilation",
+      "org": "n/a (aggregated compilation)",
+      "year": 2024,
+      "records": 9900000000,
+      "confidence": "security_research"
+    },
+    {
+      "id": "npd-2024",
+      "title": "National Public Data — 2.9 billion records",
+      "org": "National Public Data (NPD / Jerico Pictures)",
+      "year": 2024,
+      "records": 2900000000,
+      "confidence": "security_research"
+    },
+    {
+      "id": "salesloft-drift-2025",
+      "title": "Salesloft Drift OAuth campaign — 700+ organisations",
+      "org": "Salesloft (Drift) → 700+ downstream Salesforce customers",
+      "year": 2025,
+      "records": 1500000000,
+      "confidence": "attacker_claim"
+    },
+    {
+      "id": "snowflake-campaign-2024",
+      "title": "Snowflake customer credential campaign (UNC5537)",
+      "org": "Snowflake customers — 165+ tenants incl. AT&T, Ticketmaster, Santander, Advance Auto Parts, Neiman Marcus, LendingTree, ADP, Purina, EPS/Conduent",
+      "year": 2024,
+      "records": 560000000,
+      "confidence": "attacker_claim"
+    },
+    {
+      "id": "x-twitter-scrape-2023",
+      "title": "X/Twitter 200M email scrape released",
+      "org": "X Corp (Twitter)",
+      "year": 2023,
+      "records": 200000000,
+      "confidence": "security_research"
+    },
+    {
+      "id": "change-healthcare-2024",
+      "title": "Change Healthcare ransomware — largest US healthcare breach",
+      "org": "Change Healthcare (UnitedHealth Group)",
+      "year": 2024,
+      "records": 192700000,
+      "confidence": "regulatory_filing"
+    },
+    {
+      "id": "att-call-records-2024",
+      "title": "AT&T call and text metadata — 110M customers",
+      "org": "AT&T",
+      "year": 2024,
+      "records": 109800000,
+      "confidence": "victim_disclosure"
+    },
+    {
+      "id": "moveit-transfer-2023",
+      "title": "MOVEit Transfer mass exploitation",
+      "org": "Progress Software (MOVEit Transfer)",
+      "year": 2023,
+      "records": 94000000,
+      "confidence": "regulatory_filing"
+    },
+    {
+      "id": "att-march-2024",
+      "title": "AT&T — 73M current and former customers",
+      "org": "AT&T",
+      "year": 2024,
+      "records": 73000000,
+      "confidence": "victim_disclosure"
+    },
+    {
+      "id": "under-armour-mfp-2025",
+      "title": "Under Armour / MyFitnessPal — 72.7M accounts",
+      "org": "Under Armour (MyFitnessPal)",
+      "year": 2025,
+      "records": 72700000,
+      "confidence": "security_research"
+    },
+    {
+      "id": "powerschool-2024",
+      "title": "PowerSchool — 62.4M students and teachers",
+      "org": "PowerSchool",
+      "year": 2024,
+      "records": 62400000,
+      "confidence": "regulatory_filing"
+    },
+    {
+      "id": "hottopic-2024",
+      "title": "Hot Topic / BoxLunch — 57M",
+      "org": "Hot Topic / BoxLunch",
+      "year": 2024,
+      "records": 57000000,
+      "confidence": "attacker_claim"
+    }
+  ],
+  "longest_disclosure_delays": [
+    {
+      "id": "23andme-2023",
+      "org": "23andMe",
+      "days": 90
+    },
+    {
+      "id": "att-call-records-2024",
+      "org": "AT&T",
+      "days": 89
+    },
+    {
+      "id": "okta-support-2023",
+      "org": "Okta",
+      "days": 22
+    },
+    {
+      "id": "openai-mixpanel-2025",
+      "org": "OpenAI (via Mixpanel)",
+      "days": 17
+    },
+    {
+      "id": "powerschool-2024",
+      "org": "PowerSchool",
+      "days": 9
+    },
+    {
+      "id": "change-healthcare-2024",
+      "org": "Change Healthcare (UnitedHealth Group)",
+      "days": 8
+    },
+    {
+      "id": "moveit-transfer-2023",
+      "org": "Progress Software (MOVEit Transfer)",
+      "days": 4
+    }
+  ],
+  "largest_financial_impacts": [
+    {
+      "id": "moveit-transfer-2023",
+      "title": "MOVEit Transfer mass exploitation",
+      "usd": 15000000000
+    },
+    {
+      "id": "change-healthcare-2024",
+      "title": "Change Healthcare ransomware — largest US healthcare breach",
+      "usd": 3090000000
+    },
+    {
+      "id": "jlr-2025",
+      "title": "Jaguar Land Rover — production halted",
+      "usd": 2500000000
+    },
+    {
+      "id": "anthropic-authors-settlement-2025",
+      "title": "Anthropic pays $1.5B for pirated training books",
+      "usd": 1500000000
+    },
+    {
+      "id": "cdk-global-2024",
+      "title": "CDK Global — 15,000 car dealerships offline",
+      "usd": 1000000000
+    },
+    {
+      "id": "coupang-2025",
+      "title": "Coupang — 37.5M accounts, record $409M fine",
+      "usd": 409000000
+    },
+    {
+      "id": "mms-2025",
+      "title": "Marks & Spencer — Scattered Spider retail attack",
+      "usd": 400000000
+    },
+    {
+      "id": "clorox-2023",
+      "title": "Clorox ransomware operational shutdown",
+      "usd": 356000000
+    },
+    {
+      "id": "powerschool-2024",
+      "title": "PowerSchool — 62.4M students and teachers",
+      "usd": 300000000
+    },
+    {
+      "id": "mgm-resorts-2023",
+      "title": "MGM Resorts ransomware shutdown",
+      "usd": 100000000
+    },
+    {
+      "id": "clearview-ai-fines",
+      "title": "Clearview AI — €45M+ in GDPR fines and a $50M biometric settlement",
+      "usd": 100000000
+    },
+    {
+      "id": "23andme-2023",
+      "title": "23andMe credential-stuffing breach",
+      "usd": 50000000
+    },
+    {
+      "id": "okta-support-2023",
+      "title": "Okta customer support system breach",
+      "usd": 18000000
+    },
+    {
+      "id": "openai-garante-fine-2024",
+      "title": "Garante fines OpenAI €15M",
+      "usd": 15700000
+    },
+    {
+      "id": "caesars-2023",
+      "title": "Caesars Entertainment ransom payment",
+      "usd": 15000000
+    },
+    {
+      "id": "openai-redis-2023",
+      "title": "ChatGPT Redis bug — payment data leak",
+      "usd": 15000000
+    },
+    {
+      "id": "royal-mail-lockbit-2023",
+      "title": "Royal Mail international export shutdown",
+      "usd": 12000000
+    },
+    {
+      "id": "snowflake-campaign-2024",
+      "title": "Snowflake customer credential campaign (UNC5537)",
+      "usd": 5000000
+    },
+    {
+      "id": "advance-auto-parts-2024",
+      "title": "Advance Auto Parts — 2.3M via Snowflake",
+      "usd": 1500000
+    },
+    {
+      "id": "att-call-records-2024",
+      "title": "AT&T call and text metadata — 110M customers",
+      "usd": 370000
+    }
+  ],
+  "never_disclosed": [
+    {
+      "id": "x-twitter-scrape-2023",
+      "title": "X/Twitter 200M email scrape released",
+      "org": "X Corp (Twitter)",
+      "confidence": "security_research"
+    },
+    {
+      "id": "openai-forum-2023",
+      "title": "OpenAI internal employee forum breach",
+      "org": "OpenAI",
+      "confidence": "journalism"
+    },
+    {
+      "id": "hottopic-2024",
+      "title": "Hot Topic / BoxLunch — 57M",
+      "org": "Hot Topic / BoxLunch",
+      "confidence": "attacker_claim"
+    },
+    {
+      "id": "grok-indexed-2025",
+      "title": "370,000+ Grok conversations indexed by search engines",
+      "org": "xAI (Grok)",
+      "confidence": "journalism"
+    }
+  ],
+  "ai_relevant": [
+    "23andme-2023",
+    "genomics-england-2023",
+    "huggingface-tokens-dec2023",
+    "openai-redis-2023",
+    "openai-forum-2023",
+    "npd-2024",
+    "powerschool-2024",
+    "moab-2024",
+    "deepseek-clickhouse-2025",
+    "huggingface-spaces-2024",
+    "openai-mixpanel-2025",
+    "openai-garante-fine-2024",
+    "anthropic-authors-settlement-2025",
+    "meta-libgen-ruling-2025",
+    "nyt-v-openai",
+    "wayback-copilot-2025",
+    "wiz-ai-secrets-2025",
+    "grok-indexed-2025",
+    "shadow-ai-ibm-2025",
+    "salesloft-drift-2025",
+    "under-armour-mfp-2025",
+    "openai-huggingface-agent-2026",
+    "credential-dump-24b-2026",
+    "clearview-ai-fines",
+    "palo-alto-ai-dataloss-2025"
+  ],
+  "benchmarks": {
+    "itrc": {
+      "source": "Identity Theft Resource Center, Annual Data Breach Report 2025 (published Jan 2026)",
+      "url": "https://www.idtheftcenter.org/",
+      "compromises": {
+        "2023": 3205,
+        "2024": 3158,
+        "2025": 3322
+      },
+      "victim_notices_2024": 1350000000,
+      "individuals_compromised_2024_us": 1700000000,
+      "growth_2025_vs_2024_pct": 5,
+      "growth_2025_vs_5yr_prior_pct": 79,
+      "top_victim_notices_2025": [
+        {
+          "org": "PowerSchool",
+          "notices": 71900000
+        },
+        {
+          "org": "AT&T (2021 data, 2025 repo)",
+          "notices": 43989219
+        },
+        {
+          "org": "Aflac",
+          "notices": 22650000
+        },
+        {
+          "org": "Prosper Funding",
+          "notices": 17600000
+        },
+        {
+          "org": "Conduent Business Services",
+          "notices": 14791500
+        }
+      ],
+      "note": "ITRC counts only publicly reported US compromises. 2025 was the largest annual total in the ITRC's 20-year history."
+    },
+    "ibm": {
+      "source": "IBM Cost of a Data Breach Report 2025 (Ponemon Institute; 600 organisations, 17 industries, 16 countries)",
+      "url": "https://www.ibm.com/reports/data-breach",
+      "g2024": 4880000,
+      "g2025": 4440000,
+      "us2024": 9360000,
+      "us2025": 10220000,
+      "healthcare": 7420000,
+      "healthcare_years": 14,
+      "financial_services": 5560000,
+      "lifecycle_2024": 258,
+      "lifecycle_2025": 241,
+      "identify_days": 181,
+      "contain_days": 60,
+      "cost_per_record_2025": 160,
+      "phishing_pct": 16,
+      "phishing_cost": 4800000,
+      "insider_cost": 4920000,
+      "shadow_ai_pct": 20,
+      "shadow_ai_cost": 670000,
+      "shadow_ai_pii_pct": 65,
+      "increase_spend_pct": 49,
+      "increase_spend_prior": 63,
+      "note": "Global average fell 9% in 2025, the first decline in five years, while the US average rose 9.2% to a fifteenth consecutive record."
+    },
+    "verizon": {
+      "source": "Verizon Data Breach Investigations Report 2025",
+      "url": "https://www.verizon.com/business/resources/reports/dbir/",
+      "incidents": 22052,
+      "breaches": 12195,
+      "third_party_pct": 30,
+      "ransomware_pct": 44
+    },
+    "wiz": {
+      "source": "Wiz Research, 'AI companies are leaking secrets on GitHub' (Nov 2025)",
+      "url": "https://www.itpro.com/security/github-is-awash-with-leaked-ai-company-secrets-api-keys-tokens-and-credentials-were-all-found-out-in-the-open",
+      "companies": 50,
+      "pct_leaked": 65,
+      "pct_no_response": 50,
+      "valuation": 400000000000,
+      "notable": "One AI-50 company leaked a Hugging Face token inside a DELETED FORK granting access to ~1,000 private models, plus Weights & Biases keys exposing private-model training data."
+    },
+    "palo_alto": {
+      "source": "Palo Alto Networks research (early 2025)",
+      "genai_dataloss_growth": "more than doubled in early 2025",
+      "ai_share_of_saas_dataloss_pct": 14
+    },
+    "wayback_copilot": {
+      "source": "'Wayback Copilot' research (Feb 2025)",
+      "url": "https://thehackernews.com/2025-02-12000-api-keys-and-passwords-found-in.html",
+      "live_secrets": 11946,
+      "archived_repos": 20580,
+      "organisations": 16290,
+      "private_tokens": 300
+    }
+  }
+}

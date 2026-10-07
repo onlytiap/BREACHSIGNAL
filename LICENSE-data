@@ -1,0 +1,34 @@
+Attribution 4.0 International (CC BY 4.0)
+
+Applies to: data/ (incidents.json, stats.json, incidents.csv, feed.xml) and docs/
+(METHODOLOGY.md, SOURCES.md, CONTRIBUTING.md, and the prose in README.md).
+
+You are free to:
+  Share — copy and redistribute the material in any medium or format
+  Adapt — remix, transform, and build upon the material for any purpose, even commercially
+
+Under the following terms:
+  Attribution — You must give appropriate credit, provide a link to the licence, and indicate
+  if changes were made. You may do so in any reasonable manner, but not in any way that suggests
+  the licensor endorses you or your use.
+
+Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+---------------------------------------------------------------------------------------------
+
+NOTE ON THE DATA ITSELF
+
+The underlying facts in this dataset are not owned by anyone: breach disclosures, regulatory
+sanctions, court rulings and security research findings are facts about the world. What is
+licensed here is the compilation, its structure, its schema, its confidence ratings and its
+commentary.
+
+If you republish individual facts, cite the primary source listed in docs/SOURCES.md rather
+than this repository. That is better practice for you and better for the record.
+
+If you republish the compilation, cite this repository.
+
+---------------------------------------------------------------------------------------------
+
+The code in this repository (cli/, build.py, site/, .github/) is licensed separately under the
+MIT licence — see LICENSE.

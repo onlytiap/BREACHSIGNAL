@@ -1,0 +1,84 @@
+name: validate
+
+on:
+  push:
+    paths:
+      - 'data/**'
+      - 'cli/**'
+      - 'build.py'
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'cli/**'
+      - 'build.py'
+  workflow_dispatch:
+
+jobs:
+  schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate the ledger
+        run: python3 cli/bsignal.py validate
+
+      - name: Check that derived artefacts are up to date
+        run: |
+          set -euo pipefail
+          # build.py rewrites generated_at, so compare everything except that field
+          python3 - <<'PY'
+          import json, subprocess, sys, pathlib, shutil, tempfile
+
+          before = {}
+          for p in ("data/incidents.json", "data/stats.json", "data/incidents.csv", "site/data.js"):
+              before[p] = pathlib.Path(p).read_text(encoding="utf-8")
+
+          subprocess.run([sys.executable, "build.py"], check=True)
+
+          def strip_date(t):
+              import re
+              return re.sub(r'"generated_at"\s*:\s*"[^"]*"', '"generated_at":"X"', t)
+
+          bad = []
+          for p, old in before.items():
+              new = pathlib.Path(p).read_text(encoding="utf-8")
+              if strip_date(old) != strip_date(new):
+                  bad.append(p)
+
+          if bad:
+              print("::error::Derived artefacts are stale. Run `python3 build.py` and commit:")
+              for b in bad:
+                  print(f"  - {b}")
+              sys.exit(1)
+          print("derived artefacts are up to date")
+          PY
+
+      - name: Smoke-test the CLI
+        run: |
+          set -euo pipefail
+          python3 cli/bsignal.py stats            > /dev/null
+          python3 cli/bsignal.py list --limit 5   > /dev/null
+          python3 cli/bsignal.py ai               > /dev/null
+          python3 cli/bsignal.py timeline         > /dev/null
+          python3 cli/bsignal.py search snowflake > /dev/null
+          python3 cli/bsignal.py show deepseek-clickhouse-2025 > /dev/null
+          python3 cli/bsignal.py export --format csv    | head -2 > /dev/null
+          python3 cli/bsignal.py export --format ndjson | head -2 > /dev/null
+          python3 cli/bsignal.py feed --limit 5         | head -2 > /dev/null
+          echo "CLI smoke tests passed"
+
+      - name: Confirm every incident has at least one source URL
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          d = json.load(open("data/incidents.json", encoding="utf-8"))
+          bad = [i["id"] for i in d["incidents"]
+                 if not any(s.startswith(("http://", "https://")) for s in i.get("sources", []))]
+          if bad:
+              print("::error::incidents without a source URL:", ", ".join(bad)); sys.exit(1)
+          print(f"all {len(d['incidents'])} incidents have at least one source URL")
+          PY

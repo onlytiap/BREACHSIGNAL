@@ -1,0 +1,25 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# os / editors
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# local scratch
+*.local.json
+scratch/
+.env
+secrets.txt
+
+# NOTE: data/stats.json, data/incidents.csv, data/feed.xml and site/data.js are
+# deliberately NOT ignored. They are committed so that the GitHub Pages site and the
+# flat downloads work without a build step. Regenerate them with `python3 build.py`.
